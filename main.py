@@ -4,6 +4,14 @@ from openai import OpenAI
 
 # OpenAI API 키 설정
 #OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
+
+# st.secrets가 있는 경우 key 리스트 출력
+if st.secrets:
+    st.write("Available keys in st.secrets:")
+    st.write(list(st.secrets.keys()))
+else:
+    st.write("No secrets found.")
+    
 client = OpenAI(openai_api_key=st.secrets["OPENAI_API_KEY"])
 
 def generate_questions(content, category, difficulty, num_questions):
