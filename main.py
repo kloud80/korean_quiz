@@ -7,15 +7,8 @@ from openai import OpenAI
 
 # st.secrets가 있는 경우 key 리스트 출력
 
-if st.secrets:
-    st.write("**st.secrets Key-Value Pairs**")
-    for key in st.secrets:
-        st.write(f"**{key}:**", st.secrets[key])
-else:
-    st.write("No secrets found.")
-
-    
-client = OpenAI(openai_api_key=st.secrets[key])
+API_KEY = st.secrets.get("OPENAI_API_KEY", None)
+client = OpenAI(openai_api_key=API_KEY)
 
 def generate_questions(content, category, difficulty, num_questions):
     prompt = f"""- 종류: {category}
