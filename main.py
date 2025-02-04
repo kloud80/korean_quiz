@@ -8,6 +8,7 @@ from openai import OpenAI
 # st.secrets가 있는 경우 key 리스트 출력
 
 API_KEY = st.secrets.get("OPENAI_API_KEY", None)
+st.write(API_KEY)
 client = OpenAI(openai_api_key=API_KEY)
 
 def generate_questions(content, category, difficulty, num_questions):
