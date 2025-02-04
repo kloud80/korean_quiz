@@ -9,7 +9,7 @@ from openai import OpenAI
 
 API_KEY = st.secrets.get("OPENAI_API_KEY", None)
 st.write(API_KEY)
-client = OpenAI(openai_api_key=API_KEY)
+client = OpenAI(api_key=API_KEY)
 
 def generate_questions(content, category, difficulty, num_questions):
     prompt = f"""- 종류: {category}
