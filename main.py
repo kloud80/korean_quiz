@@ -9,11 +9,12 @@ from openai import OpenAI
 if st.secrets:
     st.write("Available keys in st.secrets:")
     st.write(list(st.secrets.keys()))
-    st.write(st.secrets[st.secrets.keys()[0]])
+    keys = list(st.secrets.keys())
+    st.write(keys[0])
 else:
     st.write("No secrets found.")
     
-client = OpenAI(openai_api_key=st.secrets[st.secrets.keys()[0]])
+client = OpenAI(openai_api_key=st.secrets[keys[0]])
 
 def generate_questions(content, category, difficulty, num_questions):
     prompt = f"""- 종류: {category}
