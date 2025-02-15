@@ -11,6 +11,13 @@ API_KEY = st.secrets.get("OPENAI_API_KEY", None)
 st.write(API_KEY)
 # client = OpenAI(api_key=API_KEY)
 
+# API 키가 있는지 확인
+if API_KEY is None:
+    st.error("OpenAI API 키가 설정되지 않았습니다.")
+else:
+    client = OpenAI(api_key=API_KEY)  # client 객체 생성
+    
+
 def generate_questions(content, category, difficulty, num_questions):
     prompt = f"""- 종류: {category}
     - 난이도: {difficulty}
