@@ -1,5 +1,5 @@
 import streamlit as st
-from openai import OpenAI
+import openai
 
 
 # OpenAI API 키 설정
@@ -11,11 +11,11 @@ API_KEY = st.secrets.get("OPENAI_API_KEY", None)
 st.write(API_KEY)
 # client = OpenAI(api_key=API_KEY)
 
-# API 키가 있는지 확인
+# API 키 확인
 if API_KEY is None:
     st.error("OpenAI API 키가 설정되지 않았습니다.")
 else:
-    client = OpenAI(api_key=API_KEY)  # client 객체 생성
+    client = openai.Client(api_key=API_KEY)  # 최신 OpenAI 클라이언트 객체 생성 방식
     
 
 def generate_questions(content, category, difficulty, num_questions):
